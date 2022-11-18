@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="debug-container">
+            <button onclick="toggleHotbarFunc()">Hotbar Hide/Show</button>
+            <button onclick="toggleHotbarSlotsFunc()">Hotbar Slots Hide/Show</button>
+            <button onclick="addToSlot1Func()">Add to slot 1</button>
+            <button onclick="addToSlot2Func()">Add to slot 2</button>
+            <button onclick="addToSlot6Func()">Add to slot 6</button>
+            <button onclick="toggleHighlightSlot2Func()">Select/Unselect(highlight) slot 2</button>
+            <button onclick="toggleHighlightSlot7Func()">Select/Unselect(highlight) slot 7</button>
+            <button onclick="toggleToastPistol()">Toast pistol x1</button>
+            <button onclick="toggleToastSniper()">Toast sniper x1</button>
+            <button onclick="toggleToastRifle()">Toast rifles x3</button>
+        </div>
+        <div class="hotbar-parent-container">
+            <div class="hotbar-container">
+                <div class="hotbar-wrapper">
+                    <button class="item-slot" data-slot-number="1">
+                        <img src="https://vignette.wikia.nocookie.net/pubgmobile/images/8/88/Icon_M416.png/revision/latest/scale-to-width-down/185?cb=20180905095227"
+                            alt="Gun">
+                        <span class="count">120</span>
+                    </button>
+                    <button class="item-slot" data-slot-number="2"></button>
+                    <button class="item-slot" data-slot-number="3">
+                        <img src="https://i.pinimg.com/originals/d6/50/78/d65078aa6c9d6b471ba8d70acc6c58ce.png"
+                            alt="Gun">
+                        <span class="count">190</span>
+                    </button>
+                    <button class="item-slot" data-slot-number="4"></button>
+                    <button class="item-slot" data-slot-number="5"></button>
+                    <button class="item-slot" data-slot-number="6"></button>
+                    <button class="item-slot" data-slot-number="7">
+                        <img src="https://d1nglqw9e0mrau.cloudfront.net/assets/images/game/icons/weapon_vss_01-16ef9c6c.png"
+                            alt="Gun">
+                        <span class="count">170</span>
+                    </button>
+                    <button class="item-slot" data-slot-number="8"></button>
+                    <button class="item-slot" data-slot-number="9"></button>
+                    <button class="item-slot" data-slot-number="10">
+                        <img src="https://th.bing.com/th/id/R.6e1cc8d66f0272b7d718a6fb0ad39a6c?rik=CgBx9OzzdsdSMg&riu=http%3a%2f%2fpubgdmgstats.com%2fimg%2fscarl.png&ehk=F9H9%2fOhRpwORV9M1%2bWky476bL9mJpkcuVdsv18%2fwObM%3d&risl=&pid=ImgRaw&r=0"
+                            alt="Gun">
+                        <span class="count">150</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="toast-main-container">
+
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

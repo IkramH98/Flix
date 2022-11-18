@@ -1,0 +1,351 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 20px;
+    background-image: url(https://www.gameinformer.com/sites/default/files/styles/full/public/2021/03/31/e9a728c7/pubg_lite_banner.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+}
+
+.main-container {
+    width: 100%;
+    height: calc(100vh - 40px);
+    position: relative;
+    overflow: hidden;
+}
+
+.hotbar-parent-container {
+    --border-color: rgb(6, 140, 150);
+    position: absolute;
+    width: fit-content;
+    max-width: 100%;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-bottom: 40px;
+    clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%, 0 10px);
+    background-color: transparent;
+    border-left: 4px solid var(--border-color);
+    border-right: 4px solid var(--border-color);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
+}
+
+.hotbar-parent-container.active-highlight {
+    --border-color: rgb(31, 221, 110);
+}
+
+.hotbar-parent-container.active-hotbar-animation {
+    animation: hotbarAnimation 0.25s linear forwards;
+}
+
+.hotbar-parent-container.reverse-hotbar-animation {
+    animation: hotbarAnimation 0.25s linear reverse forwards;
+}
+
+@keyframes hotbarAnimation {
+    0% {
+        transform: translateY(60px) translateX(-50%);
+        opacity: 0;
+        visibility: visible;
+    }
+
+    100% {
+        transform: translateY(0px) translateX(-50%);
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.hotbar-parent-container::after,
+.hotbar-parent-container::before {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 40px;
+    background-color: var(--border-color);
+    z-index: 1;
+    transition: 0.5s;
+}
+
+.hotbar-parent-container::after {
+    top: -19px;
+    right: 1px;
+    transform: rotate(-45deg);
+}
+
+.hotbar-parent-container::before {
+    top: -19px;
+    left: 1px;
+    transform: rotate(45deg);
+}
+
+.hotbar-container {
+    background-color: rgba(26, 26, 26, 0.6);
+    width: 100%;
+    max-width: 100%;
+    overflow: auto;
+    display: flex;
+}
+
+.hotbar-container .hotbar-wrapper {
+    display: grid;
+    grid-template-rows: auto;
+    grid-auto-flow: column;
+    overflow: hidden;
+}
+
+.hotbar-container .hotbar-wrapper .item-slot {
+    background-color: rgba(10, 10, 10, 0.4);
+    width: 120px;
+    height: 120px;
+    display: flex;
+    margin-right: 10px;
+    border: none;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+}
+
+@keyframes itemSlotAnimation {
+    0% {
+        transform: translateY(60px);
+        opacity: 0;
+        visibility: visible;
+    }
+
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.hotbar-parent-container.active-slots-animation .hotbar-wrapper .item-slot {
+    animation: itemSlotAnimation 0.25s linear forwards;
+}
+
+.hotbar-parent-container.reverse-slots-animation .hotbar-wrapper .item-slot {
+    opacity: 1;
+    visibility: visible;
+    animation: itemSlotAnimation 0.25s reverse linear forwards;
+}
+
+.hotbar-container .hotbar-wrapper .item-slot:nth-child(1),
+.hotbar-parent-container.reverse-slots-animation .hotbar-wrapper .item-slot:nth-child(10) {
+    animation-delay: 0.1s;
+}
+
+.hotbar-container .hotbar-wrapper .item-slot:nth-child(2),
+.hotbar-parent-container.reverse-slots-animation .hotbar-wrapper .item-slot:nth-child(9) {
+    animation-delay: 0.2s;
+}
+
+.hotbar-container .hotbar-wrapper .item-slot:nth-child(3),
+.hotbar-parent-container.reverse-slots-animation .hotbar-wrapper .item-slot:nth-child(8) {
+    animation-delay: 0.3s;
+}
+
+.hotbar-container .hotbar-wrapper .item-slot:nth-child(4),
+.hotbar-parent-container.reverse-slots-animation .hotbar-wrapper .item-slot:nth-child(7) {
+    animation-delay: 0.4s;
+}
+
+.hotbar-container .hotbar-wrapper .item-slot:nth-child(5),
+.hotbar-parent-container.reverse-slots-animation .hotbar-wrapper .item-slot:nth-child(6) {
+    animation-delay: 0.5s;
+}
+
+.hotbar-container .hotbar-wrapper .item-slot:nth-child(6),
+.hotbar-parent-container.reverse-slots-animation .hotbar-wrapper .item-slot:nth-child(5) {
+    animation-delay: 0.6s;
+}
+
+.hotbar-container .hotbar-wrapper .item-slot:nth-child(7),
+.hotbar-parent-container.reverse-slots-animation .hotbar-wrapper .item-slot:nth-child(4) {
+    animation-delay: 0.7s;
+}
+
+.hotbar-container .hotbar-wrapper .item-slot:nth-child(8),
+.hotbar-parent-container.reverse-slots-animation .hotbar-wrapper .item-slot:nth-child(3) {
+    animation-delay: 0.8s;
+}
+
+.hotbar-container .hotbar-wrapper .item-slot:nth-child(9),
+.hotbar-parent-container.reverse-slots-animation .hotbar-wrapper .item-slot:nth-child(2) {
+    animation-delay: 0.9s;
+}
+
+.hotbar-container .hotbar-wrapper .item-slot:nth-child(10),
+.hotbar-parent-container.reverse-slots-animation .hotbar-wrapper .item-slot:nth-child(1) {
+    animation-delay: 1s;
+}
+
+.hotbar-container .hotbar-wrapper .item-slot img {
+    animation: itemAddedAnime 0.5s linear;
+}
+
+.hotbar-container .hotbar-wrapper .item-slot:hover img,
+.hotbar-container .hotbar-wrapper .item-slot.active-highlight img {
+    transform: scale(1.25);
+}
+
+@keyframes itemAddedAnime {
+    0% {
+        opacity: 0;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.25);
+
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.hotbar-container .hotbar-wrapper .item-slot img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    margin: auto;
+    transition: 0.5s;
+}
+
+.hotbar-container .hotbar-wrapper .item-slot .count {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+    padding: 2px 5px;
+    text-shadow: rgb(175, 175, 175) 0 0 10px;
+    animation: itemAddedTextAnime 0.5s linear;
+    z-index: 1;
+}
+
+@keyframes itemAddedTextAnime {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+
+    }
+}
+
+.hotbar-container .hotbar-wrapper .item-slot:last-child {
+    margin-right: 0;
+}
+
+@media only screen and (max-width: 1200px) {
+    .hotbar-container .hotbar-wrapper {
+        display: grid;
+        grid-template-columns: auto auto auto auto auto;
+        grid-auto-flow: row;
+        grid-row-gap: 10px;
+    }
+
+    .hotbar-container .hotbar-wrapper .item-slot:nth-child(5) {
+        margin-right: 0;
+    }
+}
+
+
+/* ----------------------------------------------------------------------- */
+.toast-main-container {
+    position: absolute;
+    bottom: 40px;
+    right: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.toast-parent-container {
+    --border-color: rgb(6, 140, 150);
+    min-height: 70px;
+    min-width: 150px;
+    background-color: rgba(10, 10, 10, 0.7);
+    border-top: 2px solid var(--border-color);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-top: 10px;
+    color: var(--border-color);
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 7px), calc(100% - 7px) 100%, 0 100%, 0 10px);
+    animation: toastAnime 0.25s linear;
+}
+
+.toast-parent-container.remove-toast {
+    animation: removeToastAnime 0.25s linear forwards;
+}
+
+.toast-parent-container::after {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 40px;
+    background-color: var(--border-color);
+    z-index: 1;
+    top: -20px;
+    left: 1px;
+    transform: rotate(45deg);
+}
+
+@keyframes toastAnime {
+    0% {
+        transform: translateX(60px);
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes removeToastAnime {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(60px);
+        opacity: 0;
+    }
+}
+
+.toast-parent-container .toast-container {
+    display: flex;
+    align-items: center;
+}
+
+.toast-parent-container .toast-container img {
+    max-height: 40px;
+    margin-right: 10px;
+}
+
+.toast-parent-container .toast-container .text {
+    font-size: 14px;
+    max-width: 150px;
+}
